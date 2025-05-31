@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 3.9%; /* #0f0f0f */
+  --foreground: 0 0% 98%; /* #fafafa */
+  --muted: 240 3.7% 15.9%; /* #1a1a1a */
+  --muted-foreground: 240 5% 64.9%; /* #a1a1aa */
+  --popover: 240 10% 3.9%; /* #0f0f0f */
+  --popover-foreground: 0 0% 98%; /* #fafafa */
+  --card: 240 10% 3.9%; /* #0f0f0f */
+  --card-foreground: 0 0% 98%; /* #fafafa */
+  --border: 240 3.7% 15.9%; /* #1a1a1a */
+  --input: 240 3.7% 15.9%; /* #1a1a1a */
+  --primary: 0 84% 60%; /* #e50914 (Netflix Red) */
+  --primary-foreground: 0 0% 98%; /* #fafafa */
+  --secondary: 240 3.7% 15.9%; /* #1a1a1a */
+  --secondary-foreground: 0 0% 98%; /* #fafafa */
+  --accent: 199 89% 48%; /* #0ea5e9 (Bright Blue) */
+  --accent-foreground: 0 0% 98%; /* #fafafa */
+  --destructive: 0 62.8% 30.6%; /* #7f1d1d */
+  --destructive-foreground: 0 0% 98%; /* #fafafa */
+  --ring: 240 4.9% 83.9%; /* #d4d4d8 */
+  --radius: 0.5rem;
+  --chart-1: 12 76% 61%; /* #f59e0b */
+  --chart-2: 173 58% 39%; /* #10b981 */
+  --chart-3: 197 37% 24%; /* #3b82f6 */
+  --chart-4: 43 74% 66%; /* #f59e0b */
+  --chart-5: 27 87% 67%; /* #ef4444 */
+  --sidebar-background: 240 10% 3.9%; /* #0f0f0f */
+  --sidebar-foreground: 240 5% 64.9%; /* #a1a1aa */
+  --sidebar-primary: 0 84% 60%; /* #e50914 */
+  --sidebar-primary-foreground: 0 0% 98%; /* #fafafa */
+  --sidebar-accent: 240 3.7% 15.9%; /* #1a1a1a */
+  --sidebar-accent-foreground: 0 0% 98%; /* #fafafa */
+  --sidebar-border: 240 3.7% 15.9%; /* #1a1a1a */
+  --sidebar-ring: 240 4.9% 83.9%; /* #d4d4d8 */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background-color: #000000; /* Pure black for streaming theme */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom animations for streaming platform */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
+}
+
+/* Video player customizations */
+.video-player-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+/* Hero section gradient overlay */
+.hero-gradient {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.4) 70%,
+    transparent 100%
+  );
+}
+
+/* Card hover effects */
+.video-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Search overlay */
+.search-overlay {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Navigation backdrop blur */
+.nav-backdrop {
+  backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.7);
+}
